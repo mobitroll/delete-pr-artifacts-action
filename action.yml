@@ -1,0 +1,15 @@
+name: 'Delete PR Artifacts Action'
+description: 'An action to delete artifacts produced in a PR'
+inputs:
+  branch:
+    description: 'The branch that produced the artifacts'
+    required: true
+  workflow_file_name:
+    description: 'The file name of the workflow that produced the artifacts'
+    required: true
+  parent_repo:
+    description: 'The parent repo where the workflows run'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

@@ -1,0 +1,23 @@
+{
+  "plugins": ["jest", "@typescript-eslint", "github"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:github/recommended",
+    "plugin:github/typescript",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "no-console": ["error", { "allow": ["warn", "error"] }]
+  },
+  "env": {
+    "node": true,
+    "es6": true,
+    "jest/globals": true
+  }
+}
