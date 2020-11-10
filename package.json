@@ -11,7 +11,7 @@
     "test": "jest",
     "pretty": "yarn prettier \"**/*.{js,ts,json}\" --write",
     "precommit": "yarn build && git add dist",
-    "release": "git tag -f v1 && git push --tags"
+    "release": "git tag -f v1 && git push -f --tags"
   },
   "dependencies": {
     "@actions/core": "^1.2.4",
