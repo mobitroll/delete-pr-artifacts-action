@@ -10,7 +10,8 @@
     "lint-report": "yarn lint --output-file eslint_report.json --format json-with-metadata",
     "test": "jest",
     "pretty": "yarn prettier \"**/*.{js,ts,json}\" --write",
-    "precommit": "yarn build && git add dist"
+    "precommit": "yarn build && git add dist",
+    "release": "git tag -f v1 && git push --tags"
   },
   "dependencies": {
     "@actions/core": "^1.2.4",
