@@ -7,8 +7,8 @@ inputs:
   workflow_file_name:
     description: 'The file name of the workflow that produced the artifacts'
     required: true
-  parent_repo:
-    description: 'The parent repo where the workflows run'
+  repository:
+    description: 'The repository where the workflows run'
     required: true
 runs:
   using: 'node12'
