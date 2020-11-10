@@ -8,9 +8,25 @@ const run = async (): Promise<void> => {
     const workflowFileName = getInput('workflow_file_name');
     const branch = getInput('branch');
     const token = process.env.GITHUB_TOKEN || '';
+
     if (!token) {
-      throw "No GITHUB_TOKEN is set"
+      throw "GITHUB_TOKEN is not set"
     }
+
+    if (!parentRepo) {
+      throw "parent_repo is not set"
+    }
+
+    if (!workflowFileName) {
+      throw "workflow_file_name is not set"
+    }
+
+    if (!branch) {
+      throw "branch is not set"
+    }
+
+    info(`Cleaning artifacts for ${parentRepo} ${workflowFileName} on branch ${branch}`)
+
     const owner = parentRepo.split('/')[0];
     const repo = parentRepo.split('/')[1]
 
