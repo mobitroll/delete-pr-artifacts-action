@@ -4,7 +4,7 @@ import { getInput, info, setFailed } from '@actions/core'
 
 const run = async (): Promise<void> => {
   try {
-    const parentRepo = getInput('parent_repo');
+    const repository = getInput('repository');
     const workflowFileName = getInput('workflow_file_name');
     const branch = getInput('branch');
     const token = process.env.GITHUB_TOKEN || '';
@@ -13,8 +13,8 @@ const run = async (): Promise<void> => {
       throw "GITHUB_TOKEN is not set"
     }
 
-    if (!parentRepo) {
-      throw "parent_repo is not set"
+    if (!repository) {
+      throw "repository is not set"
     }
 
     if (!workflowFileName) {
@@ -25,10 +25,10 @@ const run = async (): Promise<void> => {
       throw "branch is not set"
     }
 
-    info(`Cleaning artifacts for ${parentRepo} ${workflowFileName} on branch ${branch}`)
+    info(`Cleaning artifacts for ${repository} ${workflowFileName} on branch ${branch}`)
 
-    const owner = parentRepo.split('/')[0];
-    const repo = parentRepo.split('/')[1]
+    const owner = repository.split('/')[0];
+    const repo = repository.split('/')[1]
 
     const octokit = getOctokit(token);
     const res = await octokit.actions.listWorkflowRuns({ owner, repo, workflow_id: workflowFileName as any, branch, event: 'pull_request' });
